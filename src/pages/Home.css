@@ -80,3 +80,9 @@
 .third-section .first-col .price {
     width: fit-content;
 }
+
+.toast-success,
+.toast-error {
+    font-weight: bold;
+    font-size: 20px;
+}

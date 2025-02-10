@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Home.css"
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { ToastContainer, toast } from 'react-toastify';
+
 
 
 function Home() {
 
+
+    let [submit , setSubmit] = useState("")
 
     const sheetUrl = "https://script.google.com/macros/s/AKfycbzP07OdwD3braF08aEaAkUKk6hwbM5H0sNviwCQDL0b0yzBajeJYTO1VQAbZYj7Z24/exec"
     const validationSchema = Yup.object({
@@ -14,22 +18,6 @@ function Home() {
             .matches(/^\d{11}$/, "يجب أن يتكون رقم الهاتف من 11 رقمًا")
             .required("رقم الهاتف مطلوب"),
     });
-    // const formik = useFormik({
-    //     initialValues: {
-    //         name: '',
-    //         phone: '',
-    //     },
-    //     validationSchema: Yup.object({
-    //         name: Yup.string()
-    //             .required('الاسم مطلوب'),
-    //         phone: Yup.string()
-    //             .matches(/^[0-9]+$/, 'رقم التليفون غير صحيح')
-    //             .required('رقم التليفون مطلوب'),
-    //     }),
-    //     onSubmit: values => {
-    //         console.log(values);
-    //     },
-    // });
 
     return (
         <>
@@ -38,10 +26,6 @@ function Home() {
                     <div className="col-12 col-md-6 first-col ps-0">
                         <div className='text-center text-white position-relative' >
                             <img src="img/product_hair.jpg" alt="" className="img-fluid w-100 header-img" style={{ height: "650px" }} />
-                            {/* <div className="content position-absolute top-0">
-                                <h2 className="p-4 "> وداعا للصلع الوراثى و تساقط الشعر </h2>
-                                <h4 className='p-4 mb-0'> استعد كثافة شعرك و ثقتك من جديد </h4>
-                            </div> */}
                         </div>
                         <div className='py-5 bottom-sec' >
                             <p className="m-auto text-center  mb-3 text-white p-4 fw-bold fs-3 rounded" >   وداعا للصلع الوراثى و تساقط الشعر <br /> Green  Mari منتج فعال لمحاربة تساقط الشعر </p>
@@ -138,26 +122,51 @@ function Home() {
                         </div>
 
                         <p className='text-white bg-dark p-2 rounded fw-bold fs-3 m-auto mt-5' style={{ width: "fit-content" }}> الشحن مجانى لجميع المحافظات  </p>
-                        <p className='text-dark bg-white rounded py-2 px-3 fw-bold fs-3 m-auto mt-4' style={{ width: "fit-content" }}> الدفع عند استلام المنتج </p>
+                        <p className='text-dark bg-white rounded mb-3 py-2 px-3 fw-bold fs-3 m-auto mt-4' style={{ width: "fit-content" }}> الدفع عند استلام المنتج </p>
                     </div>
                     <div className="col-12 col-md-6">
-                        <p className='text-dark fs-5 fw-bold mt-5 fw-bold m-auto' style={{ width: "fit-content" }}> سياسة الأسترجاع فى حالة عدم رضائك عن المنتج ضمان استرجاع خلال 14 يوم </p>
+                        <p className='text-dark text-center p-4 fs-5 fw-bold mt-5 fw-bold m-auto' style={{ width: "fit-content" }}> سياسة الأسترجاع فى حالة عدم رضائك عن المنتج ضمان استرجاع خلال 14 يوم </p>
                         <Formik
                             initialValues={{ name: "", phone: "" }}
                             validationSchema={validationSchema}
                             onSubmit={(values) => {
+                                setSubmit("submitting")
                                 console.log("Form Submitted:", values);
                                 fetch(sheetUrl, {
                                     method: "POST",
                                     mode: "no-cors",  // <--- This bypasses CORS but does not return a response
                                     headers: { "Content-Type": "application/json" },
-                                    body: JSON.stringify({
-                                        name: "John Doe",
-                                        phone: "01234567890",
-                                    }),
+                                    body: JSON.stringify(values),
                                 })
-                                    .then(() => console.log("Request sent, but no response due to 'no-cors'"))
-                                    .catch(error => console.error("Error:", error));
+                                    .then(() => {
+                                        setSubmit("submitted")
+                                        console.log("Request sent, but no response due to 'no-cors'")
+                                        toast.success('تم تسجيل بياناتك بنجاح', {
+                                            position: "top-center",
+                                            className: "toast-success",
+                                            autoClose: 5000,
+                                            hideProgressBar: false,
+                                            closeOnClick: false,
+                                            pauseOnHover: true,
+                                            draggable: true,
+                                            progress: undefined,
+                                            theme: "light",
+                                        });
+                                    })
+                                    .catch(error => {
+                                        setSubmit("submitted")
+                                        toast.error(`${error}`, {
+                                            position: "top-center",
+                                            className: "toast-error",
+                                            autoClose: 5000,
+                                            hideProgressBar: false,
+                                            closeOnClick: false,
+                                            pauseOnHover: true,
+                                            draggable: true,
+                                            progress: undefined,
+                                            theme: "light",
+                                        });
+                                    });
                             }}
                         >
                             {({ handleSubmit }) => (
@@ -217,7 +226,10 @@ function Home() {
                                         type="submit"
                                         className="btn order-btn py-2 px-3 rounded bg-dark text-white m-auto d-block fs-3 fw-bold mt-5"
                                     >
-                                        اطلب الان <i className="fa-solid fa-cart-shopping"></i>
+                                        {/* اطلب الان  */}
+                                        {submit == "submitting" ?
+                                        "جارى التسجيل" : "اطلب الان"}
+                                        <i className="fa-solid fa-cart-shopping"></i>
                                     </button>
                                 </Form>
                             )}
@@ -233,7 +245,19 @@ function Home() {
                         <div className="col-12 col-sm-4 mb-3 mb-sm-0"><img src="img/extra-3.PNG" alt="" className="img-fluid" /></div>
                     </div>
                 </div>
-                {/* <img src="img/Capture.PNG" alt="" className="img-" /> */}
+                <ToastContainer
+                    position="top-center"
+                    autoClose={5000}
+                    className="d-flex"
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick={false}
+                    rtl={true}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                />
             </footer>
         </>
     )
