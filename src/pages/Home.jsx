@@ -25,7 +25,7 @@ function Home() {
                 <div className="row">
                     <div className="col-12 col-md-6 first-col ps-0">
                         <div className='text-center text-white position-relative' >
-                            <img src="img/product_hair.jpg" alt="" className="img-fluid w-100 header-img" style={{ height: "650px" }} />
+                            <img src="img/product_hair.jpg" alt="" className="img-fluid w-100 header-img" style={{ height: "450px" }} />
                         </div>
                         <div className='py-5 bottom-sec' >
                             <p className="m-auto text-center  mb-3 text-white p-4 fw-bold fs-3 rounded" >   وداعا للصلع الوراثى و تساقط الشعر <br /> Green  Mari منتج فعال لمحاربة تساقط الشعر </p>
