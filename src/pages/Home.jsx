@@ -3,13 +3,15 @@ import "./Home.css"
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from 'react-router';
 
 
 
 function Home() {
 
 
-    let [submit , setSubmit] = useState("")
+    let [submit, setSubmit] = useState("")
+    let navigate = useNavigate()
 
     const sheetUrl = "https://script.google.com/macros/s/AKfycbzP07OdwD3braF08aEaAkUKk6hwbM5H0sNviwCQDL0b0yzBajeJYTO1VQAbZYj7Z24/exec"
     const validationSchema = Yup.object({
@@ -25,7 +27,7 @@ function Home() {
                 <div className="row">
                     <div className="col-12 col-md-6 first-col ps-0">
                         <div className='text-center text-white position-relative' >
-                            <img src="img/product_hair.jpg" alt="" className="img-fluid w-100 header-img" style={{ height: "450px" }} />
+                            <img src="img/product_hair.jpg" alt="" className="img-fluid w-100 header-img" style={{ height: "550px" }} />
                         </div>
                         <div className='py-5 bottom-sec' >
                             <p className="m-auto text-center  mb-3 text-white p-4 fw-bold fs-3 rounded" >   وداعا للصلع الوراثى و تساقط الشعر <br /> Green  Mari منتج فعال لمحاربة تساقط الشعر </p>
@@ -140,7 +142,6 @@ function Home() {
                                 })
                                     .then(() => {
                                         setSubmit("submitted")
-                                        console.log("Request sent, but no response due to 'no-cors'")
                                         toast.success('تم تسجيل بياناتك بنجاح', {
                                             position: "top-center",
                                             className: "toast-success",
@@ -152,6 +153,7 @@ function Home() {
                                             progress: undefined,
                                             theme: "light",
                                         });
+                                        navigate("completed")
                                     })
                                     .catch(error => {
                                         setSubmit("submitted")
@@ -175,13 +177,13 @@ function Home() {
                                     noValidate
                                     onSubmit={handleSubmit}
                                 >
-                                    <h2 className="text-center text-dark mb-5">
+                                    <h2 className="text-center text-white mb-5">
                                         سجل بياناتك الآن وسوف نقوم بالتواصل معكم بكل التفاصيل قبل شحن المنتج
                                     </h2>
 
                                     {/* Name Field */}
                                     <div className="mt-3">
-                                        <div className="input">
+                                        <div className="input mb-3">
                                             <label htmlFor="name" className="form-label fw-bold mb-2">
                                                 الاسم بالكامل
                                             </label>
@@ -220,13 +222,10 @@ function Home() {
                                             <ErrorMessage name="phone" component="div" className="text-danger mb-3" />
                                         </div>
                                     </div>
-
-                                    {/* Submit Button */}
                                     <button
                                         type="submit"
-                                        className="btn order-btn py-2 px-3 rounded bg-dark text-white m-auto d-block fs-3 fw-bold mt-5"
+                                        className="btn order-btn py-2 px-3 rounded text-white m-auto d-block fs-3 fw-bold mt-5"
                                     >
-                                        {/* اطلب الان  */}
                                         {submit == "submitting" ?
                                         "جارى التسجيل" : "اطلب الان"}
                                         <i className="fa-solid fa-cart-shopping"></i>

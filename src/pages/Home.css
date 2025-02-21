@@ -9,6 +9,11 @@
     background: radial-gradient(circle at left, rgb(81 86 66 / 60%), transparent 40%), radial-gradient(circle at right, rgb(56 65 40 / 60%), transparent 40%), #363e2bd4
 }
 
+@media (max-width: 768px) {
+    .header-img {
+        height: 450px !important;
+    }
+}
 .first-section .second-col {
     /* background-color: #a00000;  */
     /* color: white; */
@@ -34,6 +39,12 @@
     font-weight: bold;
 }
 
+@media (max-width: 650px) {
+    .box{
+        width: 85%;
+        margin:0 auto 20px !important;
+    }
+}
 .section-title {
     font-size: 22px;
     font-weight: bold;
@@ -85,4 +96,10 @@
 .toast-error {
     font-weight: bold;
     font-size: 20px;
+}
+
+form {
+    background: radial-gradient(circle at left, rgb(81 86 66 / 60%), transparent 40%), radial-gradient(circle at right, rgb(56 65 40 / 60%), transparent 40%), #000000d4;
+    border-radius: 15px;
+    color: white;
 }
