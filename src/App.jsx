@@ -6,12 +6,11 @@ import Completed from './pages/Completed'
 import ReactPixel from 'react-facebook-pixel';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   useEffect(() => {
     // Initialize Meta Pixel
     const options = { autoConfig: true, debug: true };
-    ReactPixel.init("YOUR_PIXEL_ID", options);
+    ReactPixel.init("1124352522216596", options);
     ReactPixel.pageView(); // Track page views
   }, []);
 
