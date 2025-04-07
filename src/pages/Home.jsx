@@ -13,7 +13,7 @@ function Home() {
     let [submit, setSubmit] = useState("")
     let navigate = useNavigate()
 
-    const sheetUrl = "https://script.google.com/macros/s/AKfycbzP07OdwD3braF08aEaAkUKk6hwbM5H0sNviwCQDL0b0yzBajeJYTO1VQAbZYj7Z24/exec"
+    const sheetUrl = "https://script.google.com/macros/s/AKfycbw3yj0htRcRKA9MFEmjUDWUFEUzeBwFtRAzkYW1XGmbsacVOiaECQagwGkFnPNWoBnSsA/exec"
     const validationSchema = Yup.object({
         name: Yup.string().required("الاسم مطلوب"),
         phone: Yup.string()
