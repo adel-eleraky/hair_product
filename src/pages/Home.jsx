@@ -3,7 +3,7 @@ import "./Home.css"
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { ToastContainer, toast } from 'react-toastify';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 
 
@@ -69,7 +69,7 @@ function Home() {
                                 <span className="position-absolute bg-white caution"> تنويه </span>
                                 المنتج طبيعى 100% و خالى من المواد الكيميائية الضارة
                             </div>
-                            <button className="btn py-2 px-3 rounded bg-dark text-white fs-3 fw-bold mt-5 order-btn"> اطلب الان <i className="fa-solid fa-cart-shopping"></i></button>
+                            <a href="#form" className="btn py-2 px-3 rounded bg-dark text-white fs-3 fw-bold mt-5 order-btn"> اطلب الان <i className="fa-solid fa-cart-shopping"></i></a>
                         </div>
                     </div>
                 </div>
@@ -176,6 +176,7 @@ function Home() {
                                     className="needs-validation w-75 m-auto mt-5 shadow p-5"
                                     noValidate
                                     onSubmit={handleSubmit}
+                                    id='form'
                                 >
                                     <h2 className="text-center text-white mb-5">
                                         سجل بياناتك الآن وسوف نقوم بالتواصل معكم بكل التفاصيل قبل شحن المنتج
