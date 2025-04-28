@@ -215,6 +215,7 @@ function Home() {
                                                 <Field
                                                     type="text"
                                                     id="phone"
+                                                    maxLength="11"
                                                     name="phone"
                                                     className="form-control rounded-0 rounded-start p-2"
                                                     placeholder="ادخل رقم تليفونك"
