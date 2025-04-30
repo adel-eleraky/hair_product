@@ -84,7 +84,7 @@ function Home() {
                                 <p> يعزز تدفق الدم الى فروة الرأس لتحفيز البصيلات الخاملة </p>
                                 <p> موصى به من قيل خبراء العناية بالشعر </p>
                             </div>
-                            <div className="col-12 col-md-6"> <img src="img/product_hair-Photoroom.png" alt="" className="img-fluid" style={{ height: "550px" }} /> </div>
+                            <div className="col-12 col-md-6"> <img src="img/product_hair-removebg-preview.png" alt="" className="img-fluid" style={{ height: "550px" }} /> </div>
                         </div>
                     </div>
                     <div className="col-12 col-md-6 second-col">
@@ -120,7 +120,7 @@ function Home() {
                                     <span className='d-block text-white bg-dark rounded px-2 mt-2' > <del>بدلا من 550 </del> </span>
                                 </div>
                             </div>
-                            <div className="col-12 col-md-6"><img src="img/product_hair-Photoroom.png" alt="" className="img-fluid" /></div>
+                            <div className="col-12 col-md-6"><img src="img/product_hair-removebg-preview.png" alt="" className="img-fluid" /></div>
                         </div>
 
                         <p className='text-white bg-dark p-2 rounded fw-bold fs-3 m-auto mt-5' style={{ width: "fit-content" }}> الشحن مجانى لجميع المحافظات  </p>
