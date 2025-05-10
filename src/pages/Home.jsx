@@ -17,7 +17,7 @@ function Home() {
     const validationSchema = Yup.object({
         name: Yup.string().required("الاسم مطلوب"),
         phone: Yup.string()
-            .matches(/^\d{11}$/, "يجب أن يتكون رقم الهاتف من 11 رقمًا")
+            .matches(/^(010|011|012|015)\d{8}$/, "يجب أن يكون رقم الهاتف المصري صحيحًا ويبدأ بـ 010 أو 011 أو 012 أو 015")
             .required("رقم الهاتف مطلوب"),
     });
 
@@ -229,7 +229,7 @@ function Home() {
                                         className="btn order-btn py-2 px-3 rounded text-white m-auto d-block fs-3 fw-bold mt-5"
                                     >
                                         {submit == "submitting" ?
-                                        "جارى التسجيل" : "اطلب الان"}
+                                            "جارى التسجيل" : "اطلب الان"}
                                         <i className="fa-solid fa-cart-shopping"></i>
                                     </button>
                                 </Form>
