@@ -13,16 +13,22 @@ function Home() {
     let [submit, setSubmit] = useState("")
     let navigate = useNavigate()
 
-    const sheetUrl = "https://script.google.com/macros/s/AKfycbx-r1dCiHLTykVF9wQqiHG379wf2f1vElHqyBiec6ENFJihxygsVHmu__FQYWMC5HeAGQ/exec"
+    const sheetUrl = "https://script.google.com/macros/s/AKfycbx4Q_kwVwZ-2fiEkzihYWOjz_sre-tf7MDqEbo2ZNawBGFoW_hPjJn1xOuPZEzeMVLFKw/exec"
     const validationSchema = Yup.object({
         name: Yup.string().required("الاسم مطلوب"),
         phone: Yup.string()
             .matches(/^(010|011|012|015)\d{8}$/, "يجب أن يكون رقم الهاتف المصري صحيحًا ويبدأ بـ 010 أو 011 أو 012 أو 015")
             .required("رقم الهاتف مطلوب"),
+        address: Yup.string().required('ادخل عنوانك - محافظتك - منطقة - اسم شارع - علامة مميزة'),
+        offer: Yup.string().required("برجاء اختيار العرض أو العبوة فقط"),
+
     });
 
     return (
         <>
+            <div className="py-4 text-center bg-dark text-white fs-3 fw-bold">
+                💰 سعر العبوة: <span className="text-warning">390 جنيه</span> | سعر العرض (عبوتين + واحدة هدية): <span className="text-success"> 765 جنيه بدلا من 1650</span>
+            </div>
             <div className="first-section">
                 <div className="row">
                     <div className="col-12 col-md-6 first-col ps-0">
@@ -30,6 +36,8 @@ function Home() {
                             <img src="img/product_hair.jpg" alt="" className="img-fluid w-100 header-img" style={{ height: "550px" }} />
                         </div>
                         <div className='py-5 bottom-sec' >
+                            <a href="#form" className="btn w-25 d-block m-auto mb-3 py-2 px-3 rounded bg-dark text-white fs-3 fw-bold mt-5 order-btn"> اطلب الان <i className="fa-solid fa-cart-shopping"></i></a>
+
                             <p className="m-auto text-center  mb-3 text-white p-4 fw-bold fs-3 rounded" >   وداعا للصلع الوراثى و تساقط الشعر <br /> Green  Mari منتج فعال لمحاربة تساقط الشعر </p>
                             <p className="w-75 m-auto text-center bg-dark mb-3 text-white p-4 fw-bold fs-3 rounded" > يقوى بصيلات الشعر و يحفز نمو الشعر الجديد </p>
                             <p className="w-75 m-auto text-center mb-3 text-white p-4 fw-bold fs-3 rounded"> يمنع التساقط و يعالج الفراغات فى فروة الرأس </p>
@@ -85,6 +93,8 @@ function Home() {
                                 <p> موصى به من قيل خبراء العناية بالشعر </p>
                             </div>
                             <div className="col-12 col-md-6"> <img src="img/product_hair-removebg-preview.png" alt="" className="img-fluid" style={{ height: "550px" }} /> </div>
+                            <a href="#form" className="btn w-25 d-block m-auto mb-3 py-2 px-3 rounded bg-dark text-white fs-3 fw-bold mt-5 order-btn"> اطلب الان <i className="fa-solid fa-cart-shopping"></i></a>
+
                         </div>
                     </div>
                     <div className="col-12 col-md-6 second-col">
@@ -125,11 +135,15 @@ function Home() {
 
                         <p className='text-white bg-dark p-2 rounded fw-bold fs-3 m-auto mt-5' style={{ width: "fit-content" }}> الشحن مجانى لجميع المحافظات  </p>
                         <p className='text-dark bg-white rounded mb-3 py-2 px-3 fw-bold fs-3 m-auto mt-4' style={{ width: "fit-content" }}> الدفع عند استلام المنتج </p>
+                        <div className="price py-2 px-4 fw-bold fs-1 m-auto bg-white rounded my-5 text-center">
+                            العبوتين و عليهم عبوة هدية <br />  765 جنيه
+                            <span className='d-block text-white bg-dark rounded px-2 mt-2'> <del>بدلا من 1650</del> </span>
+                        </div>
                     </div>
                     <div className="col-12 col-md-6">
                         <p className='text-dark text-center p-4 fs-5 fw-bold mt-5 fw-bold m-auto' style={{ width: "fit-content" }}> سياسة الأسترجاع فى حالة عدم رضائك عن المنتج ضمان استرجاع خلال 14 يوم </p>
                         <Formik
-                            initialValues={{ name: "", phone: "" }}
+                            initialValues={{ name: "", phone: "", address: "", offer: "" }}
                             validationSchema={validationSchema}
                             onSubmit={(values) => {
                                 setSubmit("submitting")
@@ -223,6 +237,43 @@ function Home() {
                                             </div>
                                             <ErrorMessage name="phone" component="div" className="text-danger mb-3" />
                                         </div>
+                                        <div className="input mt-3">
+                                            <label htmlFor="address" className="form-label fw-bold mb-2">
+                                                العنوان
+                                            </label>
+                                            <div className="input-group has-validation ">
+                                                <span className="input-group-text rounded-0 rounded-end">
+                                                    <i className="fa-solid fa-location-dot p-2"></i>
+                                                </span>
+                                                <Field
+                                                    type="text"
+                                                    id="address"
+                                                    name="address"
+                                                    className="form-control rounded-0 rounded-start p-2"
+                                                    placeholder=" ادخل عنوانك: محافظة - منطقة - اسم الشارع - علامة مميزة "
+                                                />
+                                            </div>
+                                            <ErrorMessage name="address" component="div" className="text-danger mb-3" />
+                                        </div>
+                                        <div className="input mt-3">
+                                            <label htmlFor="offer" className="form-label fw-bold mb-2">اختار العرض</label>
+                                            <div className="input-group has-validation">
+                                                <span className="input-group-text rounded-0 rounded-end">
+                                                    <i className="fa-solid fa-box-open p-2"></i>
+                                                </span>
+                                                <Field
+                                                    as="select"
+                                                    id="offer"
+                                                    name="offer"
+                                                    className="form-control rounded-0 rounded-start p-2"
+                                                >
+                                                    <option value="">اختر</option>
+                                                    <option value="double"> اشترى العرض ( عبوتين + واحدة مجانا ) </option>
+                                                    <option value="single">اشترى عبوة فقط</option>
+                                                </Field>
+                                            </div>
+                                            <ErrorMessage name="offer" component="div" className="text-danger mb-3" />
+                                        </div>
                                     </div>
                                     <button
                                         type="submit"
@@ -239,6 +290,7 @@ function Home() {
                 </div>
             </div>
             <footer className='py-3 d-flex justify-content-center'>
+                <div className="container text-center py-3"></div>
                 <div className="container text-center py-3">
                     <div className="row">
                         <div className="col-12 col-sm-4 mb-3 mb-sm-0"><img src="img/extra-1.PNG" alt="" className="img-fluid" /></div>
