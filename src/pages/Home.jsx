@@ -19,8 +19,8 @@ function Home() {
         phone: Yup.string()
             .matches(/^(010|011|012|015)\d{8}$/, "يجب أن يكون رقم الهاتف المصري صحيحًا ويبدأ بـ 010 أو 011 أو 012 أو 015")
             .required("رقم الهاتف مطلوب"),
-        address: Yup.string().required('ادخل عنوانك - محافظتك - منطقة - اسم شارع - علامة مميزة'),
-        offer: Yup.string().required("برجاء اختيار العرض أو العبوة فقط"),
+        // address: Yup.string().required('ادخل عنوانك - محافظتك - منطقة - اسم شارع - علامة مميزة'),
+        // offer: Yup.string().required("برجاء اختيار العرض أو العبوة فقط"),
 
     });
 
@@ -143,7 +143,7 @@ function Home() {
                     <div className="col-12 col-md-6">
                         <p className='text-dark text-center p-4 fs-5 fw-bold mt-5 fw-bold m-auto' style={{ width: "fit-content" }}> سياسة الأسترجاع فى حالة عدم رضائك عن المنتج ضمان استرجاع خلال 14 يوم </p>
                         <Formik
-                            initialValues={{ name: "", phone: "", address: "", offer: "" }}
+                            initialValues={{ name: "", phone: "" }}
                             validationSchema={validationSchema}
                             onSubmit={(values) => {
                                 setSubmit("submitting")
@@ -237,7 +237,7 @@ function Home() {
                                             </div>
                                             <ErrorMessage name="phone" component="div" className="text-danger mb-3" />
                                         </div>
-                                        <div className="input mt-3">
+                                        {/* <div className="input mt-3">
                                             <label htmlFor="address" className="form-label fw-bold mb-2">
                                                 العنوان
                                             </label>
@@ -273,7 +273,7 @@ function Home() {
                                                 </Field>
                                             </div>
                                             <ErrorMessage name="offer" component="div" className="text-danger mb-3" />
-                                        </div>
+                                        </div> */}
                                     </div>
                                     <button
                                         type="submit"
