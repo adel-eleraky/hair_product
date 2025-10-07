@@ -27,7 +27,7 @@ function Home() {
     return (
         <>
             <div className="py-4 text-center bg-dark text-white fs-3 fw-bold">
-                💰 سعر العبوة: <span className="text-warning">390 جنيه</span> | سعر العرض (عبوتين + واحدة هدية): <span className="text-success"> 765 جنيه بدلا من 1650</span>
+                💰 سعر العبوة: <span className="text-warning">380 جنيه</span> | بدلا من 550 جنيه
             </div>
             <div className="first-section">
                 <div className="row">
@@ -126,7 +126,7 @@ function Home() {
                         <div className="row">
                             <div className="col-12 col-md-6">
                                 <div className="price py-2 px-4 fw-bold fs-1 m-auto bg-white rounded mt-5 text-center" >
-                                    السعر <br /> 390
+                                    السعر <br /> 380
                                     <span className='d-block text-white bg-dark rounded px-2 mt-2' > <del>بدلا من 550 </del> </span>
                                 </div>
                             </div>
@@ -135,10 +135,10 @@ function Home() {
 
                         <p className='text-white bg-dark p-2 rounded fw-bold fs-3 m-auto mt-5' style={{ width: "fit-content" }}> الشحن مجانى لجميع المحافظات  </p>
                         <p className='text-dark bg-white rounded mb-3 py-2 px-3 fw-bold fs-3 m-auto mt-4' style={{ width: "fit-content" }}> الدفع عند استلام المنتج </p>
-                        <div className="price py-2 px-4 fw-bold fs-1 m-auto bg-white rounded my-5 text-center">
+                        {/* <div className="price py-2 px-4 fw-bold fs-1 m-auto bg-white rounded my-5 text-center">
                             العبوتين و عليهم عبوة هدية <br />  765 جنيه
                             <span className='d-block text-white bg-dark rounded px-2 mt-2'> <del>بدلا من 1650</del> </span>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="col-12 col-md-6">
                         <p className='text-dark text-center p-4 fs-5 fw-bold mt-5 fw-bold m-auto' style={{ width: "fit-content" }}> سياسة الأسترجاع فى حالة عدم رضائك عن المنتج ضمان استرجاع خلال 14 يوم </p>
